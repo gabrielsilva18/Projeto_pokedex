@@ -1,0 +1,82 @@
+Requisição HTTPS:
+
+URL: https://pokeapi.co/api/v2/pokemon/1 -> nosso path, funciona como IP e porta do servidor.
+
+https://pokeapi.co -> IP
+api/v2/pokemon/1 -> endereço do recurso solicitado
+
+
+Vários tipos de requisições: GET(busca); Post(Adicionar elementos); Put(atualizar); delete(apagar)....
+
+**Para que uma requisição aconteça e necessário passar dados ao servidor, para que ele cumpra a ação desejada na requisição(path)
+
+PRIMEIRA AREA DE TRANSFERENCIA DE DADOS : O PROPRIO PATCH
+
+SEGUNDA AREA DE TRANSFERENCIA DE DADOS: Query string(Descrição de Busca), funciona como uma filtragem por exemplo, exemplo de busca: encontrar todos os pokemons que tenham type = grass;
+como ficaria a sintaxe: https://pokeapi.co/api/v2/pokemon?type=grass
+onde tudo após a ? é a query string;
+
+outro exemplo encontrar todos os pokemons que tenham type = grass e que comecem com a letra i;
+como ficaria a sintaxe: https://pokeapi.co/api/v2/pokemon?type=grass&name=i
+concatenação;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+O QUE SÃO HEADERS?
+R-são normalmente metadados da nossa requisição, usados para descrever ou complementar a nossa requisição;
+
+exemplo:
+text/html //estou falando ao servidor que eu aceito html
+aplication/xhtml+xml //que aceito aplication xhtml
+aplicationn/xml;q=0.9 //que aceito xml com prioridade 9
+image/avif // que aceito eesse tipo de imagem
+image/webp // aceito esse tipo de imagem
+image/apng //aceito esse tipo de imagem
+*/*;q=0.8 //que aceito qualquer coisa 
+aplication/signed-exchange;v=b3;q=0.9 
+
+//estou falando ao servidor o que aceito como resposta
+
+
+request headers                                     reponse headers
+configuração da nossa API                           configuração de resposta da API
+
+exemplo:
+accept-language: 
+pt-br //portugues br, com prioridade maxima q=1
+pt;q=0.9 //portugues com 9 de prioridade
+en-US;q=0.8 //ingles EUA prioridade 8
+en;q=0.7 //ingles prioridade 7
+gl;q=0.6 //global 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dependendo do metodo que eu esteja utilizando eu tenho uma area de dados chamado de Body o corpo da requisição, o dado que eu quero trafegar;
+como por exemplo em um post, onde tem-se o exemplo de inserir um nopvo pokemon e para isso e necessario mandar informações sobre esse pokemon, e isso é enviado através do body.
+
+como isso está ligado intimamante ao metodo a ser utilizado, eu deveria especificar através de um request headers que eu gostaria de receber um json
+
+Request Headers
+Content-type: aplication/json
+
+//aqui no body ficara o json
+Request BODY{
+    "NAME": "TESTE"
+}
+
+//O CONTEUDO DO BODY É DE ACORDO COM O CONTENT-TYPE
+//O BODY PODE ESTAR TANTO NA REQUISÇÃO QUANTO NA RESPOSTA
+
+Uma requisição é composta por: 
+URL
+REQUEST METHOD
+REQUEST HEADERS
+REQUEST BODY
+
+
+E a resposta do servidor é composta por:
+STATUS CODE -- Número que indica o que aconteceu com nossa requisição, se foi aceita, ou não por exemplo.(um tipo de resposta)
+RESPONSE HEADERS -- diz como a resposta está configurada
+RESPONSE BODY -- resposta em si
+
+
